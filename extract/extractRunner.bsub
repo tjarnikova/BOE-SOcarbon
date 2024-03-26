@@ -1,0 +1,17 @@
+#!/bin/sh
+
+#SBATCH --mail-type=ALL
+#SBATCH -p compute-64-512
+#SBATCH -t 96:00:00
+#SBATCH --job-name=era
+#SBATCH -o p-%J.out
+#SBATCH -e p-%J.out
+#SBATCH --mem 8G 
+
+module purge
+module add python/anaconda/2019.10/3.7
+source activate swamp2
+
+#run me from the login node otehrwise i get confused
+#python dateReformatUKESM.py
+python runner.py
